@@ -1,0 +1,35 @@
+@use "../global" as g;
+
+/*!
+component > archive-recruit-content
+------------------------------
+*/
+
+.c-archive-recruit {
+    background-color: var(--color-primary-extra-light);
+    padding-top: 24px;
+    padding-bottom: 64px;
+}
+
+
+.c-archive-recruit-content-wrapper {
+    margin-top: 40px;
+    @include g.mq(lg) {
+        display: flex;
+        gap: 20px;
+    }
+    @include g.mq(xl) {
+        gap: 64px;
+    }
+}
+
+.c-archive-recruit-content {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include g.mq(lg) {
+        margin-top: 0;
+    }
+}

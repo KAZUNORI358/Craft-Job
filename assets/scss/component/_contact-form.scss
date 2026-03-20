@@ -1,0 +1,140 @@
+@use "../global" as g;
+
+/*!
+component > contact-form
+------------------------------
+*/
+
+.c-contact-form {
+    margin-top: 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include g.mq(md) {
+        margin-top: 51px;
+    }
+}
+
+
+.c-contact-form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    @include g.mq() {
+        gap: 12px;
+    }
+}
+
+.c-contact-form-item-title {
+    font-weight: 700;
+    letter-spacing: 0.025em;
+
+    @include g.mq() {
+        font-size: 18px;
+    }
+}
+
+.c-contact-form-item-required {
+    margin-left: 3px;
+    font-size: 14px;
+    letter-spacing: 0.025em;
+    color: var(--color-white);
+    background-color: var(--color-red);
+    padding: 2px 6px;
+    border-radius: 4px;
+
+    @include g.mq() {
+        margin-left: 4px;
+    }
+}
+
+.c-contact-form-item-input {
+    width: 100%;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 10px 12px;
+    outline: none;
+    letter-spacing: 0.025em;
+
+    &::placeholder {
+        color: var(--color-font-light);
+        opacity: 0.6;
+    }
+
+    // フォーカス時のスタイル
+    &:focus {
+        box-shadow: 0 0 0 1px var(--color-primary), 0 0 0 4px var(--color-primary-light);
+    }
+
+    &--textarea {
+        height: 200px;
+        appearance: none; // ブラウザのデフォルトスタイルをリセット
+        -webkit-appearance: none; // Safari, Chrome用
+        -moz-appearance: none; // Firefox用
+        field-sizing: content; // コンテンツサイズに合わせてリサイズ
+        resize: vertical; // 縦方向のみリサイズ可能
+    }
+}
+
+.c-contact-form-privacy-text {
+    text-align: center;
+    letter-spacing: 0.025em;
+
+    @include g.mq() {
+        font-size: 18px;
+    }
+
+    a {
+        text-decoration: underline;
+        transition: opacity 0.5s;
+
+        @media (any-hover:hover) {
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+
+        &:focus {
+            outline: none;
+            border-radius: 4px;
+            box-shadow: 0 0 0 1px var(--color-primary), 0 0 0 4px var(--color-primary-light);
+        }
+    }
+}
+
+.c-contact-form-button {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    height: 58px;
+    outline: none;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    transition: opacity 0.6s;
+    cursor: pointer;
+
+    @media (any-hover:hover) {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &:focus {
+        outline: none;
+        border-radius: 6px;
+        box-shadow: 0 0 0 1px var(--color-accent), 0 0 0 4px var(--color-accent-light);
+    }
+
+    @include g.mq(md) {
+        font-size: 18px;
+        height: 61px;
+    }
+}
+
+.wpcf7-spinner {
+    display: none !important;
+}

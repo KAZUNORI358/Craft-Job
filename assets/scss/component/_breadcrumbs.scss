@@ -1,0 +1,64 @@
+@use "../global" as g;
+
+/*!
+component > breadcrumbs
+------------------------------
+*/
+
+.c-breadcrumbs {
+    margin-top: 17px;
+    background-color: var(--color-font-base);
+    padding: 8px 0;
+
+    @include g.mq(sm) {
+        margin-top: 74px;
+    }
+}
+
+.c-breadcrumbs-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    color: var(--color-white);
+    font-size: 14px;
+
+    &:first-child {
+        &::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            mask-image: url(../../assets/img/icon/icon-home.svg);
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            margin-right: 3px;
+            background-color: var(--color-white);
+        }
+    }
+
+    a {
+        padding: 1px 0;
+        transition: 0.5s;
+
+        @media (any-hover:hover) {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+.c-breadcrumbs-separator {
+    width: 6px;
+    height: 6px;
+    border-left: 2px solid var(--color-white);
+    border-bottom: 2px solid var(--color-white);
+    transform: rotate(-135deg);
+    margin: 0 10px;
+
+    @include g.mq(md) {
+        width: 7px;
+        height: 7px;
+        margin: 0 11px;
+    }
+}

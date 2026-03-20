@@ -1,0 +1,104 @@
+@use "../../global" as g;
+
+/*!
+page > top > slider
+------------------------------
+*/
+
+
+.top-slider-button {
+    background-color: var(--color-primary);
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s;
+
+    &::before {
+        background-color: var(--color-white);
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        mask-image: url(../../assets/img/icon/icon-arrow.svg);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+    }
+
+    &--prev {
+        rotate: 180deg;
+    }
+
+    @media (any-hover:hover) {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+.splide__arrows {
+    margin-top: 22px;
+    display: flex;
+    justify-content: space-between;
+
+    @include g.mq() {
+        margin-top: 0;
+        position: absolute;
+        top: 45%;
+        transform: translateY(-50%);
+        width: 100%;
+        z-index: 1;
+
+        .splide__arrow--prev {
+            position: absolute;
+            left: -28px;
+        }
+
+        .splide__arrow--next {
+            position: absolute;
+            right: -28px;
+        }
+    }
+}
+
+
+/* ページネーション */
+.splide__pagination {
+    padding: 0;
+    /* デフォルトのpaddingを削除 */
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include g.mq() {
+        position: static;
+        transform: none;
+        margin-top: 19px;
+        width: fit-content;
+        margin-inline: auto;
+    }
+}
+
+/* ドット */
+.splide__pagination__page {
+    width: 8px;
+    height: 8px;
+    background: var(--color-slider-dot);
+    border-radius: 100vh;
+    margin: 0 3px;
+
+    @include g.mq() {
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+    }
+}
+
+/* アクティブ */
+.splide__pagination__page.is-active {
+    background: var(--color-primary);
+}

@@ -1,0 +1,244 @@
+@use "../../global" as g;
+
+/*!
+page > top > recruit
+------------------------------
+*/
+
+.top-recruit {
+    background-color: var(--color-primary-extra-light);
+    padding-top: 228px;
+
+    @include g.mq(md) {
+        padding-top: 85px;
+    }
+}
+
+.top-recruit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 70px;
+
+    @include g.mq() {
+        margin-top: 57px;
+    }
+}
+
+.top-recruit-title {
+    font-size: 22px;
+    font-weight: 700;
+
+    @include g.mq() {
+        font-size: 26px;
+    }
+}
+
+.top-recruit-link {
+    color: var(--color-primary);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    transition: 0.5s ease;
+
+    @include g.mq() {
+        font-size: 18px;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        mask-image: url(../../assets/img/icon/icon-arrow.svg);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        width: 20px;
+        height: 20px;
+        background-color: var(--color-primary);
+    }
+
+
+    @media (any-hover:hover) {
+        &:hover {
+            opacity: 0.7;
+
+            &::after {
+                animation: arrow-animation 0.5s ease;
+            }
+        }
+    }
+}
+@keyframes arrow-animation {
+    0% {
+        translate: 0 0 ;
+    }
+    50%{
+        translate: 100% 0;
+    }
+    50.1%{
+        translate: -100% 0;
+    }
+    100% {
+        translate: 0 0;
+    }
+}
+
+
+
+.top-recruit-item-wrapper {
+    margin-top: 24px;
+    position: relative;
+}
+
+
+// top-recruit-item-card
+
+.top-recruit-item-card {
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 4 4px 0 rgba(149, 165, 153, 0.05);
+}
+
+.top-recruit-item-card-image {
+    display: block;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    aspect-ratio: 340/183;
+
+    img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    @include g.mq(xxl) {
+        aspect-ratio: 383/207;
+        max-height: 207px;
+    }
+}
+
+.top-recruit-item-card-content {
+    padding: 24px;
+    height: 277px;
+
+    @include g.mq(md) {
+        height: 300px;
+    }
+
+    @include g.mq(lg) {
+        height: 350px;
+    }
+
+    @include g.mq(xl) {
+        height: 330px;
+    }
+
+    @include g.mq(xxl) {
+        height: 281px;
+    }
+}
+
+.top-recruit-item-card-company {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.top-recruit-item-card-company-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 6px;
+    object-fit: cover;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.top-recruit-item-card-company-name {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.top-recruit-item-card-title {
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.top-recruit-item-card-tag-list {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 18px;
+    row-gap: 2px;
+}
+
+.top-recruit-item-card-tag-item {
+    color: var(--color-primary);
+    font-weight: 700;
+    display: flex;
+    font-size: 14px;
+
+    @include g.mq() {
+        font-size: 16px;
+    }
+
+    &::before {
+        content: "#";
+        display: inline-block;
+        color: var(--color-primary);
+    }
+}
+
+
+.top-recruit-item-card-button-wrapper {
+    padding: 16px;
+    border-top: 1px solid var(--color-border-light);
+
+    @include g.mq() {
+        grid-template-columns: 1fr;
+    }
+}
+
+.top-recruit-item-card-button {
+    font-weight: 700;
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    height: 52px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    transition: 0.5s;
+
+    @include g.mq() {
+        font-size: 18px;
+        height: 55px;
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        mask-image: url(../../assets/img/icon/icon-detail.svg);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        background-color: var(--color-primary);
+    }
+
+    @media (any-hover:hover) {
+        &:hover {
+            background-color: var(--color-primary-light);
+        }
+    }
+}

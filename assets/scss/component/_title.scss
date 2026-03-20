@@ -1,0 +1,19 @@
+@use "../global" as g;
+
+/*!
+component > title
+------------------------------
+*/
+
+.c-title-primary {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    border-radius: 6px;
+    padding: 12px 24px;
+
+    @include g.mq(md) {
+        font-size: 28px;
+    }
+}

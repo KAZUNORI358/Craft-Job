@@ -1,0 +1,102 @@
+@use "../../global" as g;
+
+/*!
+page > recruit-ranking > recruit-ranking
+------------------------------
+*/
+
+.recruit-ranking {
+    background-color: var(--color-primary-extra-light);
+    padding-top: 24px;
+    padding-bottom: 64px;
+}
+
+.recruit-ranking-content-wrapper {
+    margin-top: 40px;
+
+    @include g.mq(lg) {
+        display: flex;
+        gap: 20px;
+    }
+
+    @include g.mq(xl) {
+        gap: 64px;
+    }
+}
+
+.recruit-ranking-content {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include g.mq(lg) {
+        margin-top: 0;
+    }
+}
+
+.recruit-ranking-content-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: var(--z-index-ranking);
+}
+
+.recruit-ranking-content-header-ranking {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-white);
+    border-radius: 11px 0 0 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-rank-other); //4位以降はこれを使う
+
+    &--rank1 {
+        background-color: var(--color-rank-1);
+    }
+
+    &--rank2 {
+        background-color: var(--color-rank-2);
+    }
+
+    &--rank3 {
+        background-color: var(--color-rank-3);
+    }
+}
+
+.recruit-ranking-content-header-view {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    background-color: var(--color-white);
+    border-radius: 0 11px 0 8px;
+    width: 72px;
+    height: 30px;
+}
+
+.recruit-ranking-content-header-view-number {
+    font-weight: 700;
+    color: var(--color-primary);
+
+    @include g.mq() {
+        font-size: 18px;
+    }
+}
+
+.recruit-ranking-content-header-view-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-primary);
+    padding-top: 5px;
+
+    @include g.mq(lg) {
+        padding-top: 7px;
+    }
+
+}

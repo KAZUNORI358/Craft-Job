@@ -1,0 +1,114 @@
+@use "../global" as g;
+
+/*!
+component > pagination
+------------------------------
+*/
+
+.c-pagination {
+    margin-top: 20px;
+
+    @include g.mq() {
+        margin-top: 40px;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        @include g.mq() {
+            gap: 16px;
+        }
+    }
+
+    .page-numbers {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        background-color: var(--color-white);
+        border: 1px solid var(--color-border);
+        border-radius: 100vh;
+        transition: 0.5s;
+        font-size: 14px;
+
+        @include g.mq() {
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+        }
+
+        @media (any-hover:hover) {
+            &:hover {
+                background-color: var(--color-primary);
+                color: var(--color-white);
+            }
+        }
+    }
+
+    .current {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        pointer-events: none;
+    }
+
+    .dots {
+        border: none;
+        pointer-events: none;
+    }
+
+    .prev,
+    .next {
+        position: relative;
+    }
+
+    .prev {
+        &::before {
+            content: "";
+            position: absolute;
+            top: 42%;
+            left: 47%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-top: 1px solid var(--color-font-base);
+            border-right: 1px solid var(--color-font-base);
+            transform: rotate(225deg);
+        }
+
+        @media (any-hover:hover) {
+            &:hover {
+                &::before {
+                    border-top: 1px solid var(--color-white);
+                    border-right: 1px solid var(--color-white);
+                }
+            }
+        }
+    }
+
+    .next {
+        &::before {
+            content: "";
+            position: absolute;
+            top: 40%;
+            left: 38%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-top: 1px solid var(--color-font-base);
+            border-right: 1px solid var(--color-font-base);
+            transform: rotate(45deg);
+        }
+
+        @media (any-hover:hover) {
+            &:hover {
+                &::before {
+                    border-top: 1px solid var(--color-white);
+                    border-right: 1px solid var(--color-white);
+                }
+            }
+        }
+    }
+}

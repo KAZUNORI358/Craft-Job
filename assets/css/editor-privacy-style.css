@@ -1,0 +1,149 @@
+@charset "UTF-8";
+:root {
+  --color-font-base: #333835;
+  --color-primary: #46B06B;
+  --color-black: #313331;
+  --color-white: #FFFFFF;
+  --color-gray: #F7F7F7;
+  --color-border-light: #EBEEF4;
+  --color-border: #D8DADE;
+  --color-dummy: #A0A0A0;
+  --color-font-light: #6B6C6C;
+  --color-accent: #ED8F41;
+  --color-primary-light: #E2F6E9;
+  --color-favorite: #E2BD43;
+  --color-favorite-hover: #E2BD4360;
+  --color-red: #E74848;
+  --color-slider-dot: #C7C7C7;
+  --color-primary-extra-light: #F2F8F4;
+  --color-link: #398AE1;
+  --color-rank-1: #E2BD43;
+  --color-rank-2: #A7A9AC;
+  --color-rank-3: #CD7F32;
+  --color-rank-other: #313331;
+  --color-bg-component: #D0D0D0;
+  --color-accent-light: #FEF0E4;
+}
+
+/*!
+global > content-width
+------------------------------
+*/
+:root {
+  --width-content: 800px;
+  --width-content-l: 1180px;
+}
+
+/*!
+global > font
+------------------------------
+*/
+:root {
+  --font-family-base: "Noto Sans JP", sans-serif;
+}
+
+/*!
+global > z-index
+------------------------------
+*/
+:root {
+  --z-index-header: 30;
+  --z-index-ranking: 10;
+  --z-index-default: 5;
+  --z-index-background: 1;
+  --z-index-footer: 30;
+}
+
+/*!
+記事の装飾 privacyページ
+------------------------------
+*/
+.editor-styles-wrapper {
+  background-color: var(--color-primary-extra-light);
+  margin: 0 19px;
+}
+.editor-styles-wrapper h1 {
+  font-size: 24px;
+  letter-spacing: 0.025em;
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 12px;
+  position: relative;
+  margin-bottom: 40px;
+}
+@media screen and (min-width: 768px) {
+  .editor-styles-wrapper h1 {
+    font-size: 32px;
+  }
+}
+.editor-styles-wrapper h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 60px;
+  height: 5px;
+  border-radius: 10px;
+  background: -webkit-gradient(linear, left top, right top, from(var(--color-primary)), color-stop(50%, var(--color-primary)), color-stop(50%, var(--color-accent)), to(var(--color-accent)));
+  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) 50%, var(--color-accent) 50%, var(--color-accent) 100%);
+}
+.editor-styles-wrapper p {
+  line-height: 2;
+  letter-spacing: 0.025em;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.editor-styles-wrapper p:not(:first-child) {
+  margin-top: 8px;
+}
+@media screen and (min-width: 768px) {
+  .editor-styles-wrapper p {
+    font-size: 18px;
+  }
+}
+.editor-styles-wrapper h2 {
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+@media screen and (min-width: 768px) {
+  .editor-styles-wrapper h2 {
+    font-size: 24px;
+  }
+}
+.editor-styles-wrapper ul {
+  margin-top: 8px;
+  letter-spacing: 0.025em;
+  line-height: 2;
+  padding-left: 0;
+}
+@media screen and (min-width: 768px) {
+  .editor-styles-wrapper ul {
+    font-size: 18px;
+  }
+}
+.editor-styles-wrapper li {
+  counter-increment: list;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 4px;
+}
+.editor-styles-wrapper li::before {
+  content: counter(list) ". ";
+  display: inline-block;
+}
+@media screen and (min-width: 768px) {
+  .editor-styles-wrapper li::before {
+    font-size: 18px;
+  }
+}

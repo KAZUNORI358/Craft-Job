@@ -1,0 +1,52 @@
+@use "../global" as g;
+
+/*!
+component > post-meta
+------------------------------
+*/
+
+
+.c-post-meta {
+    display: flex;
+    text-align: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.c-post-meta-date {
+    font-size: 14px;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    @include g.mq() {
+        font-size: 16px;
+    }
+
+    &--published {
+        &::before {
+            content: "";
+            background-image: url("../../assets/img/icon/icon-publish.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+    }
+
+    &--updated {
+        &::before {
+            content: "";
+            background-image: url("../../assets/img/icon/icon-update.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+    }
+}

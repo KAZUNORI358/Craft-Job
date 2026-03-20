@@ -1,0 +1,199 @@
+@use "../../global" as g;
+
+/*!
+page > archive-column > archive-column
+------------------------------
+*/
+
+.archive-column {
+    background-color: var(--color-primary-extra-light);
+}
+
+.archive-column-title {
+    font-size: 24px;
+    letter-spacing: 0.025em;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 12px;
+    position: relative;
+
+    @include g.mq() {
+        font-size: 32px;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 5px;
+        border-radius: 10px;
+        background: linear-gradient(to right,
+                var(--color-primary) 0%, var(--color-primary)50%,
+                var(--color-accent) 50%, var(--color-accent) 100%);
+    }
+}
+
+.archive-column-category-list {
+    margin-top: 40px;
+    margin-left: 20px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; // スマホでのスクロールバー非表示
+    scrollbar-width: none; // スクロールバー非表示 firefox
+
+    &::-webkit-scrollbar {
+        display: none; // スクロールバー非表示 chrome, safari
+    }
+
+    @include g.mq() {
+        margin-top: 48px;
+        margin-left: 0;
+        flex-wrap: wrap;
+        max-width: 600px;
+        row-gap: 8px;
+        justify-content: center;
+        margin-inline: auto;
+    }
+}
+
+.archive-column-category-item {
+    flex-shrink: 0;
+}
+
+.archive-column-category-link {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+    border: 2px solid var(--color-primary);
+    border-radius: 100vw;
+    padding: 4px 16px 4px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: opacity 0.5s;
+    white-space: nowrap;
+
+    @include g.mq() {
+        font-size: 16px;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-left: 2px solid var(--color-primary);
+        border-bottom: 2px solid var(--color-primary);
+        transform: rotate(-45deg) translateY(-50%);
+    }
+
+    &.is-active {
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+
+        &::after {
+            border-left-color: var(--color-white);
+            border-bottom-color: var(--color-white);
+        }
+    }
+
+    @media (any-hover:hover) {
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}
+
+.archive-column-content-wrapper {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    @include g.mq(md) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px 24px;
+    }
+
+    @include g.mq(xl) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.archive-column-content {
+    width: 100%;
+    background-color: var(--color-white);
+    border-radius: 12px;
+
+}
+
+.archive-column-content-link {
+    @media (any-hover:hover) {
+        &:hover {
+            .archive-column-content-image {
+                img {
+                    scale: 1.03;
+                }
+            }
+
+            .archive-column-content-body {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+.archive-column-content-image {
+    display: block;
+    aspect-ratio: 342/192;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+
+    img {
+        object-fit: cover;
+        object-position: center;
+        transition: 0.5s;
+        width: 100%;
+        height: 100%;
+    }
+
+    @include g.mq() {
+        aspect-ratio: 377/212;
+    }
+}
+
+.archive-column-content-body {
+    padding: 24px 16px;
+    transition: 0.5s;
+    border-radius: 0 0 12px 12px;
+}
+
+.archive-column-content-category {
+    font-weight: 700;
+    width: fit-content;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    padding: 2px 12px;
+    border-radius: 4px;
+
+    @include g.mq() {
+        font-size: 18px;
+    }
+}
+
+.archive-column-content-title {
+    margin-top: 4px;
+    font-size: 20px;
+    font-weight: 700;
+
+    @include g.mq() {
+        font-size: 22px;
+    }
+}

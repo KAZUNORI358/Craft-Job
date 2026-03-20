@@ -1,0 +1,307 @@
+@use "../global" as g;
+
+/*!
+component > search-form
+------------------------------
+*/
+
+.c-search-form {
+    margin-top: 40px;
+    width: 100%;
+    height: fit-content;
+    border-radius: 6px;
+    border: 1px solid var(--color-border-light);
+    overflow: hidden;
+    flex-shrink: 0;
+
+    &.is-open {
+        .c-search-form-summary-icon span:last-child {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+    }
+
+    @include g.mq(lg) {
+        margin-top: 0;
+        max-width: 340px;
+        position: sticky;
+        top: 120px;
+
+        &.is-open {
+            .c-search-form-summary-icon span:last-child {
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+}
+
+.c-search-form-summary {
+    cursor: pointer;
+    list-style: none;
+    background-color: var(--color-white);
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+
+
+    &::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        background-color: var(--color-primary);
+        mask-image: url(../../assets/img/icon/icon-filter.svg);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+    }
+
+    @include g.mq() {
+        font-size: 20px;
+    }
+
+}
+
+.c-search-form-summary-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+}
+
+.c-search-form-summary-icon span {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-font-light);
+    transition: transform 0.6s;
+}
+
+.c-search-form-summary-icon span:first-child {
+    width: 100%;
+    height: 2px;
+}
+
+.c-search-form-summary-icon span:last-child {
+    width: 2px;
+    height: 100%;
+
+    @include g.mq() {
+        width: 100%;
+        height: 2px;
+    }
+}
+
+// c-search-form-content
+
+.c-search-form-content {
+    background-color: var(--color-white);
+}
+
+.c-search-form-content-form-item {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.c-search-form-content-item-label {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-weight: 700;
+
+    &::before {
+        content: "";
+        display: block;
+        width: 22px;
+        height: 22px;
+        background-color: var(--color-primary);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+    }
+
+
+    &--area {
+        &::before {
+            mask-image: url(../../assets/img/icon/icon-area.svg);
+        }
+    }
+
+    &--role {
+        &::before {
+            mask-image: url(../../assets/img/icon/icon-employment.svg);
+        }
+    }
+
+    &--occupation {
+        &::before {
+            mask-image: url(../../assets/img/icon/icon-role.svg);
+        }
+    }
+
+    &--salary {
+        &::before {
+            mask-image: url(../../assets/img/icon/icon-salary.svg);
+        }
+
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .c-search-form-content-item-label-text {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .c-search-form-content-item-label-text-unit {
+            font-size: 12px;
+            font-weight: 700;
+            padding-bottom: 2px;
+        }
+    }
+
+    @include g.mq() {
+        font-size: 18px;
+    }
+}
+
+.c-search-form-content-form-item-select-wrapper {
+    width: 100%;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 40%;
+        right: 16px;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        border-left: 2px solid var(--color-font-light);
+        border-bottom: 2px solid var(--color-font-light);
+        transform: rotate(-45deg);
+        pointer-events: none;
+    }
+}
+
+.c-search-form-content-form-item-select {
+    width: 100%;
+    background-color: var(--color-gray);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 10px 16px;
+    outline: none;
+    font-size: 16px;
+
+    // フォーカス時のスタイル
+    &:focus {
+        box-shadow: 0 0 0 1px var(--color-primary), 0 0 0 4px var(--color-primary-light);
+    }
+}
+
+// input
+
+.c-search-form-content-form-item-input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 4px;
+
+}
+
+.c-search-form-content-form-item-input {
+    padding: 10px 12px;
+    background-color: var(--color-gray);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    flex: 1;
+    min-width: 0;
+    outline: none;
+    font-size: 16px;
+
+    // 数値入力の矢印（スピンボタン）を消去する
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    appearance: textfield; // Firefox用
+
+    // フォーカス時のスタイル
+    &:focus {
+        box-shadow: 0 0 0 1px var(--color-primary), 0 0 0 4px var(--color-primary-light);
+    }
+}
+
+.c-search-form-content-form-item-input-separator {
+    flex-shrink: 0;
+    font-weight: 700;
+
+    @include g.mq() {
+        font-size: 18px;
+    }
+}
+
+.c-search-form-content-form-button {
+    width: 100%;
+    border-radius: 6px;
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    height: 58px;
+    outline: none;
+    font-weight: 700;
+    transition: opacity 0.6s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: opacity 0.6s;
+    outline: none;
+
+    &::before {
+        content: "";
+        display: block;
+        width: 22px;
+        height: 22px;
+        background-color: var(--color-white);
+        mask-image: url(../../assets/img/icon/icon-search.svg);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+    }
+
+    @include g.mq() {
+        height: 61px;
+        font-size: 18px;
+        &::before {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &:focus {
+        border-radius: 6px;
+        box-shadow: 0 0 0 1px var(--color-primary), 0 0 0 4px var(--color-primary-light);
+    }
+
+    @media (any-hover:hover) {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}

@@ -1,0 +1,488 @@
+@use "global" as g;
+
+/*!
+記事の装飾 columnページ
+------------------------------
+*/
+
+.editor-styles-wrapper {
+    background-color: var(--color-primary-extra-light);
+
+    h1 {
+        font-size: 26px;
+        font-weight: 700;
+        max-width: 800px;
+
+        @include g.mq() {
+            font-size: 34px;
+        }
+    }
+
+    .is-root-container {
+        max-width: 800px;
+        margin-inline: auto;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 48px;
+        padding: 10px 16px;
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        border-radius: 8px;
+
+        @include g.mq() {
+            font-size: 26px;
+        }
+    }
+
+    h3 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+
+        &::before {
+            content: "";
+            display: block;
+            width: 6px;
+            align-self: stretch;
+            background-color: var(--color-primary);
+            border-radius: 50px;
+        }
+
+        @include g.mq() {
+            font-size: 24px;
+        }
+    }
+
+    h4 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        &::after {
+            content: "";
+            display: block;
+            align-self: stretch;
+            height: 4px;
+            background-color: var(--color-primary);
+            border-radius: 50px;
+        }
+
+        @include g.mq() {
+            font-size: 20px;
+        }
+    }
+
+    p {
+        margin-top: 24px;
+    }
+
+    strong {
+        font-weight: 700;
+        color: var(--color-primary);
+    }
+
+    a {
+        color: var(--color-link);
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    ul {
+        margin-top: 24px;
+        margin-left: 22px;
+        list-style: disc;
+    }
+
+    ol {
+        margin-top: 24px;
+        margin-left: 22px;
+        list-style: decimal;
+    }
+
+    li::marker {
+        color: var(--color-primary);
+    }
+
+    img {
+        margin-top: 24px;
+    }
+
+    // 引用のスタイル
+    blockquote {
+        margin-top: 24px;
+        font-style: italic;
+        padding: 15px;
+        background-color: var(--color-gray);
+        border-radius: 9px;
+        border: 1px solid var(--color-border);
+        position: relative;
+        z-index: 5;
+
+        &::after {
+            content: "";
+            position: absolute;
+            background-image: url("../../assets/img/icon/css_icon-blockquote.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            bottom: 8.68px;
+            right: 6px;
+            width: 60px;
+            height: 42px;
+            z-index: 6;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    // テーブルのスタイル
+    .wp-block-table {
+        margin-top: 24px;
+
+        tr:first-child {
+            background-color: var(--color-gray);
+            font-weight: 700;
+        }
+
+        tr:not(:first-child) {
+            background-color: var(--color-white);
+        }
+
+        td {
+            border: 1px solid var(--color-border);
+            padding: 9px;
+        }
+
+        figcaption {
+            margin-top: 4px;
+            text-align: center;
+            opacity: 0.6;
+            font-style: italic;
+        }
+
+        &.is-style-table-type1 {
+            tr:last-child {
+                background-color: var(--color-gray);
+                font-weight: 700;
+            }
+
+            td {
+                width: 250px;
+
+                @include g.mq() {
+                    width: auto;
+                }
+            }
+        }
+
+        &.is-style-table-type2 {
+            td:first-child {
+                width: 73px;
+
+                @include g.mq() {
+                    width: 105px;
+                }
+            }
+
+            td:not(:first-child) {
+                width: 359px;
+
+                @include g.mq() {
+                    width: auto;
+                }
+            }
+
+
+        }
+
+        &.is-style-table-type3 {
+            td {
+                width: 251px;
+            }
+        }
+    }
+
+
+    // 詳細(アコーディオン)のスタイル
+    details {
+        margin: 0;
+
+        summary {
+            font-size: 16px;
+            font-weight: 700;
+            background-color: var(--color-primary);
+            padding: 4px 12px;
+            border-radius: 4px;
+            color: var(--color-white);
+            width: fit-content;
+            transition: 0.5s;
+
+            @include g.mq() {
+                font-size: 18px;
+            }
+
+            @media (any-hover:hover) {
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        summary::marker {
+            display: block;
+            background-color: var(--color-white);
+        }
+
+        p {
+            margin-top: 0;
+            margin-left: 0 !important;
+            background-color: var(--color-primary-light);
+            padding: 8px 16px;
+            border-radius: 0 4px 4px 4px;
+            border: 1px solid var(--color-primary);
+            width: fit-content;
+        }
+    }
+
+    details[open] {
+        summary {
+            border-radius: 4px 4px 0 0;
+        }
+    }
+
+
+    // ボタンのスタイル
+    .wp-block-button__link {
+        color: var(--color-white);
+        background-color: var(--color-accent);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 24px;
+        border-radius: 100vh;
+        font-size: 18px;
+        font-weight: 700;
+        transition: 0.5s;
+        margin-top: 24px;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 11.31px;
+            height: 11.31px;
+            mask-image: url("../../assets/img/icon/arrow-down.svg");
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            background-color: var(--color-white);
+            transform: rotate(-90deg);
+        }
+
+        @media (any-hover:hover) {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        @include g.mq() {
+            font-size: 20px;
+        }
+    }
+
+    // 埋め込みのスタイル
+    .wp-block-embed {
+        margin-top: 24px;
+        margin-inline: auto;
+        display: block;
+        width: 100%;
+
+        article {
+            margin: 0 auto;
+        }
+
+        // youtubeのスタイル
+        iframe {
+            aspect-ratio: 16/9;
+            margin: 0 auto;
+        }
+    }
+
+
+    // 吹き出し(アイコン左寄せ)のスタイル
+    .balloon-left {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        gap: 32px;
+
+        @include g.mq() {
+            grid-template-columns: 90px 1fr;
+            gap: 40px;
+        }
+
+        .wp-block-image {
+            width: 70px;
+            height: 70px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 100vh;
+            margin: 0;
+
+            @include g.mq() {
+                width: 90px;
+                height: 90px;
+            }
+
+            img {
+                margin-top: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 100vh;
+            }
+        }
+
+        .balloon-text {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 21.55px 21px;
+            border-radius: 10px;
+            position: relative;
+            margin: 0;
+
+            // 吹き出しの左側の三角形(外枠)
+            &::before {
+                content: "";
+                position: absolute;
+                left: -23px;
+                top: 32px;
+                width: 22px;
+                height: 20px;
+                background: var(--color-border);
+                clip-path: polygon(0 50%, 100% 0, 100% 100%);
+            }
+
+            // 吹き出しの左側の三角形(内枠)
+            &::after {
+                content: "";
+                position: absolute;
+                left: -21px;
+                top: 33px;
+                width: 21px;
+                height: 18px;
+                background: var(--color-white);
+                clip-path: polygon(0 50%, 100% 0, 100% 100%);
+            }
+        }
+    }
+
+
+    // 吹き出し(アイコン右寄せ)のスタイル
+    .balloon-right {
+        display: grid;
+        grid-template-columns: 1fr 70px;
+        gap: 32px;
+
+        @include g.mq() {
+            grid-template-columns: 1fr 90px;
+            gap: 40px;
+        }
+
+        .wp-block-image {
+            width: 70px;
+            height: 70px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 100vh;
+            margin: 0;
+
+
+            @include g.mq() {
+                width: 90px;
+                height: 90px;
+            }
+
+            img {
+                margin-top: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 100vh;
+            }
+        }
+
+        .balloon-text {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 21.55px 21px;
+            border-radius: 10px;
+            position: relative;
+            margin: 0;
+
+            // 吹き出しの左側の三角形(外枠)
+            &::before {
+                content: "";
+                position: absolute;
+                right: -23px;
+                top: 32px;
+                width: 22px;
+                height: 20px;
+                background: var(--color-border);
+                clip-path: polygon(100% 50%, 0 0, 0 100%);
+            }
+
+            // 吹き出しの左側の三角形(内枠)
+            &::after {
+                content: "";
+                position: absolute;
+                right: -21px;
+                top: 33px;
+                width: 21px;
+                height: 18px;
+                background: var(--color-white);
+                clip-path: polygon(100% 50%, 0 0, 0 100%);
+            }
+        }
+    }
+
+
+    // 情報ボックスのスタイル
+    .box-01 {
+        margin-top: 24px;
+
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+            border-radius: 8px 8px 0 0;
+            border: 1px solid var(--color-primary);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-white);
+            background-color: var(--color-primary);
+            padding: 12px 24px;
+            gap: 0;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        ul {
+            margin: 0;
+            padding: 16px 16px 16px 44px;
+            background-color: var(--color-primary-light);
+            border-radius: 0 0 8px 8px;
+        }
+    }
+}
