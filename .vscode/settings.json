@@ -1,0 +1,12 @@
+{
+    // Live Sass Compilerの設定を指定
+    "liveSassCompile.settings.formats": [
+        {
+            // メインのSCSSファイル用設定
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/assets/css"
+        }
+    ],
+    "liveSassCompile.settings.showOutputWindowOn": "Warning"
+}

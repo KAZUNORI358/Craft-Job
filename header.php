@@ -25,14 +25,14 @@
     <!-- header -->
     <header class="l-header">
         <div class="l-header-inner l-container-l">
-            <h1 class="l-header-logo">
+            <<?php echo is_front_page() ? 'h1' : 'p'; ?> class="l-header-logo">
                 <a href="<?php echo esc_url(home_url('/')); ?>">
                     <span class="l-header-logo-image">
                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/logo/logo.svg" alt="Craft Job" width="122" height="25">
                     </span>
                     <span class="u-visually-hidden">Craft Job</span>
                 </a>
-            </h1>
+            </<?php echo is_front_page() ? 'h1' : 'p'; ?>>
             <nav class="l-header-nav" aria-label="ヘッダーナビゲーション">
                 <ul class="l-header-list">
                     <li class="l-header-item">
