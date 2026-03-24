@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -20,7 +19,6 @@
     <script src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/js/main.js" type="module"></script>
     <?php wp_head(); ?>
 </head>
-
 <body <?php body_class(); ?>>
     <!-- header -->
     <header class="l-header">
@@ -33,6 +31,7 @@
                     <span class="u-visually-hidden">Craft Job</span>
                 </a>
             </<?php echo is_front_page() ? 'h1' : 'p'; ?>>
+
             <nav class="l-header-nav" aria-label="ヘッダーナビゲーション">
                 <ul class="l-header-list">
                     <li class="l-header-item">
